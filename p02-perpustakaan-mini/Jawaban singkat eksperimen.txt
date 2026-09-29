@@ -1,0 +1,15 @@
+1. Eksperimen Membuat Objek dari Class Koleksi
+
+Saat mencoba membuat objek Koleksi secara langsung dengan new Koleksi(...), compiler menghasilkan error "Koleksi is abstract; cannot be instantiated". Hal ini terjadi karena Koleksi merupakan abstract class, sehingga tidak dapat dibuat objek secara langsung. Class tersebut hanya menjadi class induk bagi class turunannya seperti Buku, Majalah, dan Skripsi.
+
+2. Eksperimen Mengubah Nama Method hitungDenda
+
+Saat nama method hitungDenda() diubah menjadi hitungdenda() tetapi anotasi @Override tetap digunakan, terjadi error karena nama method tersebut tidak sama dengan method yang ada pada interface BisaDipinjam. Jika @Override dihapus, error pada anotasi tersebut hilang, tetapi method hitungdenda() tetap tidak mengimplementasikan method hitungDenda() yang diwajibkan oleh interface.
+
+3. Eksperimen Membuat Judul Kosong
+
+Saat membuat objek Buku dengan judul kosong, program menghasilkan IllegalArgumentException dengan pesan "Judul tidak boleh kosong". Hal ini terjadi karena constructor pada class Koleksi memiliki validasi yang menolak judul yang kosong menggunakan judul == null || judul.isBlank().
+
+4. Eksperimen Mengubah status Secara Langsung
+
+Saat atribut status diubah dari private menjadi public, status koleksi dapat diubah secara langsung dari luar class. Hal tersebut melanggar prinsip enkapsulasi karena data internal dapat diubah tanpa melalui method pinjam() dan kembalikan(). Oleh karena itu, atribut status sebaiknya tetap dibuat private.
