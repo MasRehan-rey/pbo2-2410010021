@@ -209,7 +209,7 @@ public class GaleriLayout extends javax.swing.JFrame {
 
         layoutTab.addTab("Gabungan", gabunganPanel);
 
-        getContentPane().add(layoutTab, java.awt.BorderLayout.CENTER);
+        getContentPane().add(layoutTab, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
