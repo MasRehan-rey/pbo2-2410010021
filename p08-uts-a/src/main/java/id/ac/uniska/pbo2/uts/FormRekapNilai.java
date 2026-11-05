@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package id.ac.uniska.pbo2.p08;
+package id.ac.uniska.pbo2.uts;
+
+import com.formdev.flatlaf.FlatLightLaf;
 
 /**
  *
@@ -12,14 +14,75 @@ package id.ac.uniska.pbo2.p08;
 public class FormRekapNilai extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormRekapNilai.class.getName());
-
+    private final NilaiMahasiswaTableModel model =
+        new NilaiMahasiswaTableModel();
     /**
      * Creates new form FormRekapNilai
      */
     public FormRekapNilai() {
         initComponents();
+        tabelNilai.setModel(model);
+        setLocationRelativeTo(null);
+        getRootPane().setDefaultButton(simpanButton);
+        pesanLabel.setForeground(java.awt.Color.RED);
+        pesanLabel.setText("");
+        perbaruiRingkasan();
+    }
+    
+    private void perbaruiRingkasan() {
+    infoLabel.setText("Jumlah: " + model.getJumlahMahasiswa()
+            + " & Rata-rata: " + String.format("%.2f", model.getRataRata()));
+}
+
+private void bersihkanForm() {
+    npmField.setText("");
+    namaField.setText("");
+    tugasField.setText("");
+    utsField.setText("");
+    uasField.setText("");
+    pesanLabel.setText("");
+    npmField.requestFocus();
+}
+
+private boolean validasi() {
+    String npm = npmField.getText().trim();
+    String nama = namaField.getText().trim();
+
+    if (!npm.matches("\\d{10}")) {
+        pesanLabel.setText("NPM harus 10 digit angka");
+        npmField.requestFocus();
+        return false;
     }
 
+    if (model.npmSudahAda(npm)) {
+        pesanLabel.setText("NPM sudah terdaftar");
+        npmField.requestFocus();
+        return false;
+    }
+
+    if (nama.isEmpty()) {
+        pesanLabel.setText("Nama wajib diisi");
+        namaField.requestFocus();
+        return false;
+    }
+
+    try {
+        int t = Integer.parseInt(tugasField.getText().trim());
+        int u = Integer.parseInt(utsField.getText().trim());
+        int a = Integer.parseInt(uasField.getText().trim());
+
+        if (t < 0 || t > 100 || u < 0 || u > 100 || a < 0 || a > 100) {
+            pesanLabel.setText("Nilai harus 0 sampai 100");
+            return false;
+        }
+    } catch (NumberFormatException e) {
+        pesanLabel.setText("Nilai harus berupa angka bulat");
+        return false;
+    }
+
+    pesanLabel.setText("");
+    return true;
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,35 +122,52 @@ public class FormRekapNilai extends javax.swing.JFrame {
 
         inputPanel.setLayout(new java.awt.GridLayout(0, 2, 0, 8));
 
+        npmLabel.setDisplayedMnemonic('N');
+        npmLabel.setLabelFor(npmField);
         npmLabel.setText("NPM");
         inputPanel.add(npmLabel);
         inputPanel.add(npmField);
 
+        namaLabel.setDisplayedMnemonic('M');
+        namaLabel.setLabelFor(namaField);
         namaLabel.setText("Nama");
         inputPanel.add(namaLabel);
         inputPanel.add(namaField);
 
+        tugasLabel.setDisplayedMnemonic('T');
+        tugasLabel.setLabelFor(tugasField);
         tugasLabel.setText("Nilai Tugas");
         inputPanel.add(tugasLabel);
         inputPanel.add(tugasField);
 
+        utsLabel.setDisplayedMnemonic('U');
+        utsLabel.setLabelFor(utsField);
         utsLabel.setText("Nilai UTS");
         inputPanel.add(utsLabel);
         inputPanel.add(utsField);
 
+        uasLabel.setDisplayedMnemonic('S');
+        uasLabel.setLabelFor(uasField);
         uasLabel.setText("Nilai UAS");
         inputPanel.add(uasLabel);
         inputPanel.add(uasField);
 
         kiriPanel.add(inputPanel, java.awt.BorderLayout.NORTH);
 
+        kontrolPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 12, 8, 8));
         kontrolPanel.setLayout(new java.awt.BorderLayout());
         kontrolPanel.add(infoLabel, java.awt.BorderLayout.NORTH);
 
+        buttonPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 12, 1, 8));
+
+        simpanButton.setBackground(new java.awt.Color(0, 51, 204));
+        simpanButton.setForeground(new java.awt.Color(255, 255, 255));
         simpanButton.setText("Simpan");
+        simpanButton.addActionListener(this::simpanButtonActionPerformed);
         buttonPanel.add(simpanButton);
 
         bersihkanButton.setText("Bersihkan");
+        bersihkanButton.addActionListener(this::bersihkanButtonActionPerformed);
         buttonPanel.add(bersihkanButton);
 
         kontrolPanel.add(buttonPanel, java.awt.BorderLayout.CENTER);
@@ -112,18 +192,38 @@ public class FormRekapNilai extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelNilai);
 
-        kananPanel.add(jScrollPane1, java.awt.BorderLayout.NORTH);
-        kananPanel.add(pesanLabel, java.awt.BorderLayout.CENTER);
+        kananPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        kananPanel.add(pesanLabel, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(kananPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
+    if (!validasi()) return;
+
+    model.tambahData(new NilaiMahasiswa(
+        npmField.getText().trim(),
+        namaField.getText().trim(),
+        Integer.parseInt(tugasField.getText().trim()),
+        Integer.parseInt(utsField.getText().trim()),
+        Integer.parseInt(uasField.getText().trim())
+    ));
+
+    perbaruiRingkasan();
+    bersihkanForm();        // TODO add your handling code here:
+    }//GEN-LAST:event_simpanButtonActionPerformed
+
+    private void bersihkanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bersihkanButtonActionPerformed
+    bersihkanForm();        // TODO add your handling code here:
+    }//GEN-LAST:event_bersihkanButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -140,7 +240,7 @@ public class FormRekapNilai extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        FlatLightLaf.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FormRekapNilai().setVisible(true));
     }

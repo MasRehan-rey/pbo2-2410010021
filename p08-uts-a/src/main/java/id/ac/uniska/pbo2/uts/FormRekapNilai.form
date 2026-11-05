@@ -55,6 +55,10 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="npmLabel">
               <Properties>
+                <Property name="displayedMnemonic" type="int" value="78"/>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="npmField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="NPM"/>
               </Properties>
             </Component>
@@ -62,6 +66,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="namaLabel">
               <Properties>
+                <Property name="displayedMnemonic" type="int" value="77"/>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="namaField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nama"/>
               </Properties>
             </Component>
@@ -69,6 +77,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="tugasLabel">
               <Properties>
+                <Property name="displayedMnemonic" type="int" value="84"/>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="tugasField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nilai Tugas"/>
               </Properties>
             </Component>
@@ -76,6 +88,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="utsLabel">
               <Properties>
+                <Property name="displayedMnemonic" type="int" value="85"/>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="utsField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nilai UTS"/>
               </Properties>
             </Component>
@@ -83,6 +99,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="uasLabel">
               <Properties>
+                <Property name="displayedMnemonic" type="int" value="83"/>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="uasField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nilai UAS"/>
               </Properties>
             </Component>
@@ -91,6 +111,13 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="kontrolPanel">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                <EmptyBorder bottom="8" left="12" right="8" top="8"/>
+              </Border>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="Center"/>
@@ -107,6 +134,13 @@
               </Constraints>
             </Component>
             <Container class="javax.swing.JPanel" name="buttonPanel">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="1" left="12" right="8" top="8"/>
+                  </Border>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="Center"/>
@@ -117,13 +151,25 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="simpanButton">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="33" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Simpan"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="simpanButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="bersihkanButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bersihkan"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bersihkanButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -153,7 +199,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="North"/>
+              <BorderConstraints direction="Center"/>
             </Constraint>
           </Constraints>
 
@@ -176,7 +222,7 @@
         <Component class="javax.swing.JLabel" name="pesanLabel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Center"/>
+              <BorderConstraints direction="South"/>
             </Constraint>
           </Constraints>
         </Component>
