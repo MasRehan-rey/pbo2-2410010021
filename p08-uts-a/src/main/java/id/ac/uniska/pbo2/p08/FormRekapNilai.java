@@ -6,7 +6,8 @@ package id.ac.uniska.pbo2.p08;
 
 /**
  *
- * @author Raihan
+ * @author Muhammad Raihan Alfa Rizky
+ * 2410010021
  */
 public class FormRekapNilai extends javax.swing.JFrame {
     
@@ -28,7 +29,7 @@ public class FormRekapNilai extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        isianPanel = new javax.swing.JPanel();
+        kiriPanel = new javax.swing.JPanel();
         inputPanel = new javax.swing.JPanel();
         npmLabel = new javax.swing.JLabel();
         npmField = new javax.swing.JTextField();
@@ -40,69 +41,65 @@ public class FormRekapNilai extends javax.swing.JFrame {
         utsField = new javax.swing.JTextField();
         uasLabel = new javax.swing.JLabel();
         uasField = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        tablePanel = new javax.swing.JPanel();
+        kontrolPanel = new javax.swing.JPanel();
+        infoLabel = new javax.swing.JLabel();
+        buttonPanel = new javax.swing.JPanel();
+        simpanButton = new javax.swing.JButton();
+        bersihkanButton = new javax.swing.JButton();
+        kananPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelNilai = new javax.swing.JTable();
+        pesanLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rekap Nilai Mahasiswa");
 
-        isianPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 12, 8, 12));
-        isianPanel.setLayout(new java.awt.BorderLayout());
+        kiriPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 12, 12, 8));
+        kiriPanel.setLayout(new java.awt.BorderLayout());
 
-        inputPanel.setLayout(new java.awt.GridLayout(0, 1, 0, 8));
+        inputPanel.setLayout(new java.awt.GridLayout(0, 2, 0, 8));
 
         npmLabel.setText("NPM");
         inputPanel.add(npmLabel);
-
-        npmField.setText("jTextField1");
         inputPanel.add(npmField);
 
-        namaLabel.setText("jLabel5");
+        namaLabel.setText("Nama");
         inputPanel.add(namaLabel);
-
-        namaField.setText("jTextField5");
         inputPanel.add(namaField);
 
-        tugasLabel.setText("jLabel4");
+        tugasLabel.setText("Nilai Tugas");
         inputPanel.add(tugasLabel);
-
-        tugasField.setText("jTextField2");
         inputPanel.add(tugasField);
 
-        utsLabel.setText("jLabel1");
+        utsLabel.setText("Nilai UTS");
         inputPanel.add(utsLabel);
-
-        utsField.setText("jTextField4");
         inputPanel.add(utsField);
 
-        uasLabel.setText("jLabel3");
+        uasLabel.setText("Nilai UAS");
         inputPanel.add(uasLabel);
-
-        uasField.setText("jTextField3");
         inputPanel.add(uasField);
 
-        isianPanel.add(inputPanel, java.awt.BorderLayout.PAGE_START);
+        kiriPanel.add(inputPanel, java.awt.BorderLayout.NORTH);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        kontrolPanel.setLayout(new java.awt.BorderLayout());
+        kontrolPanel.add(infoLabel, java.awt.BorderLayout.NORTH);
 
-        isianPanel.add(jPanel2, java.awt.BorderLayout.CENTER);
+        simpanButton.setText("Simpan");
+        buttonPanel.add(simpanButton);
 
-        getContentPane().add(isianPanel, java.awt.BorderLayout.WEST);
+        bersihkanButton.setText("Bersihkan");
+        buttonPanel.add(bersihkanButton);
 
-        tablePanel.setLayout(new java.awt.BorderLayout());
+        kontrolPanel.add(buttonPanel, java.awt.BorderLayout.CENTER);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        kiriPanel.add(kontrolPanel, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(kiriPanel, java.awt.BorderLayout.LINE_START);
+
+        kananPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 8, 12, 12));
+        kananPanel.setLayout(new java.awt.BorderLayout());
+
+        tabelNilai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -113,11 +110,12 @@ public class FormRekapNilai extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelNilai);
 
-        tablePanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        kananPanel.add(jScrollPane1, java.awt.BorderLayout.NORTH);
+        kananPanel.add(pesanLabel, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(tablePanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(kananPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,16 +146,21 @@ public class FormRekapNilai extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bersihkanButton;
+    private javax.swing.JPanel buttonPanel;
+    private javax.swing.JLabel infoLabel;
     private javax.swing.JPanel inputPanel;
-    private javax.swing.JPanel isianPanel;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel kananPanel;
+    private javax.swing.JPanel kiriPanel;
+    private javax.swing.JPanel kontrolPanel;
     private javax.swing.JTextField namaField;
     private javax.swing.JLabel namaLabel;
     private javax.swing.JTextField npmField;
     private javax.swing.JLabel npmLabel;
-    private javax.swing.JPanel tablePanel;
+    private javax.swing.JLabel pesanLabel;
+    private javax.swing.JButton simpanButton;
+    private javax.swing.JTable tabelNilai;
     private javax.swing.JTextField tugasField;
     private javax.swing.JLabel tugasLabel;
     private javax.swing.JTextField uasField;
